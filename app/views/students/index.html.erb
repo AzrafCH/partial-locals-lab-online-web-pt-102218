@@ -1,7 +1,10 @@
 <div>
-  <%= form_tag("/students", method: "get") do %>
-    <%= label_tag(:q, "Search for student: ")%><%= text_field_tag "name"%>
-    <%= submit_tag(value="Search")%>
+  <%= form_tag students_path, method: :get do %>
+  <p>
+    <%= label_tag(:name, "Student Name: ")%>
+    <%= text_field_tag :name, params[:name]%>
+    <%= submit_tag 'Search', name: nil%>
+  </p>
   <%end%>
 </div>
 
@@ -9,4 +12,4 @@
   <%= @students.each do |student| %>
     <%= render partial: "student", locals: {student: student}%>
   <%end%>
-</div> 
+</div>
